@@ -19,7 +19,7 @@
     margin-right: 250px;
 }
 
-.menu-list{
+#menu-list{
     display: flex;
     justify-content: space-between;
     margin-left: 25px;
@@ -27,4 +27,12 @@
     color: aliceblue;
     margin-top: 18px;
     font-size: 18px;
+}
+
+.active{
+    color:red;
+}
+
+.inactive{
+    color:gray;
 }
