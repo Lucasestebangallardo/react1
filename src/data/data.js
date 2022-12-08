@@ -5,8 +5,8 @@ export const data = [
         nombre: 'Pantalon',
         talla:'Grande',
         color: 'Azul',
-        
         category:'pantalones',
+        precio:"$1000",
        imagen:'pantalon' ,
 
     },
@@ -17,7 +17,7 @@ export const data = [
         talla:'Mediano',
         color: 'Azul',
         category:'pantalones',
-        
+        precio:"$1000",
         imagen:'pantalon' ,
     },
 
@@ -27,6 +27,7 @@ export const data = [
         talla:'Grande',
         color: 'Rojo',
         category:'pantalones',
+        precio:"$1000",
         imagen:'pantalon', 
     },
     {
@@ -35,6 +36,7 @@ export const data = [
         talla:'Grande',
         color: 'Azul',
         category:'remeras',
+        precio:"$1000",
         imagen:'remera' ,
     },
     {
@@ -43,6 +45,7 @@ export const data = [
         talla:'Chica',
         color: 'Negra',
         category:'remeras',
+        precio:"$1000",
         imagen:'remera' ,
     },
     {
@@ -51,6 +54,7 @@ export const data = [
         talla:'Chica',
         color: 'Violeta',
         category:'remeras',
+        precio:"$1000",
         imagen:'remera' ,
     },
 ]
