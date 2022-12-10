@@ -1,3 +1,8 @@
+"PROYECTO REACT"
+Basado en una tienda de ecommerce de venta de articulos de computacion, creado con react, javascript y tailwind.
+"ADJUNTO VIDEO DE PRUEBA"
+https://youtu.be/8o1CzcmQE3k
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
