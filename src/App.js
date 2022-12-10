@@ -1,39 +1,29 @@
-
 import './App.css';
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import CartWidget from './components/CartWidget/CartWidget';
-/* import ItemsContainer from './pages/ItemsListContainer/ItemsContainer'; */
-import ItemsListContainer from './pages/ItemsListContainer/ItemsListContainer';
-/* import ItemsListContainer from './pages/ItemsListContainer/ItemsListContainer'; */
-import NavBar from './components/NavBar/Navbar';
-import ItemDetailCointainer from './pages/itemDetailContainer/ItemDetailContainer';
-import Cart from './pages/Cart/cart'
-import CartProvider from './context/CartProvider'
+import React from 'react';
+
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+import Cart from './components/Cart/Cart';
+import ItemDetailContainer from './components/ItemDetailContainer/ItemDetailContainer';
+import ItemListContainer from './components/ItemListContainer/ItemListContainer';
+import NavBar from './components/NavBar/NavBar'; 
+import CartProvider from './context/CartContext';
 
 function App() {
   return (
-    
-    <>
-    <CartProvider>
-    <BrowserRouter>
-    <NavBar/>
-    
-   
-    <Routes>
-      <Route path="/" element={< ItemsListContainer />
-   } />
-    <Route path="/category/:categoriaId" element={< ItemsListContainer />
-   } />
-      <Route path="item/:id"/* ItemDetailContainer  */element={<ItemDetailCointainer/>}/>
-      <Route path="cart" element={<Cart/>} />
-
-    </Routes>
-    </BrowserRouter>
-
-    </CartProvider>
-     
-    
-    </>
+    <div className="App">
+      <BrowserRouter>
+        <CartProvider>
+          <NavBar />
+          <Routes>
+            <Route path='/' element={<ItemListContainer />} />
+            <Route path='/categoria/:categoriaId' element={<ItemListContainer />} />
+            <Route path='/cart' element={<Cart />} />
+            <Route path='/detalle/:detalleId' element={<ItemDetailContainer />} />
+          </Routes>
+        </CartProvider>
+      </BrowserRouter>
+    </div>
   );
 }
 

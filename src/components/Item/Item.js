@@ -1,23 +1,25 @@
-/* import ItemList from "../ItemList/ItemList" */
+import './Item.css';
 
-import {Link} from 'react-router-dom';
-const Item = ({producto}) => {
-  return (
-   
-     <Link to={`item/${producto.id}`}>
-      <div style={{border:'3px solid black'}}>
-      <img src={`images/${producto.imagen}.jpg`} alt={producto.nombre} />
-      <div>
-     {/* <img></img> */}
-     <h2>Nombre del producto: {producto.nombre}</h2>
-      <h2>Talla del producto: {producto.talla}</h2>
-      <h2>Color del producto: {producto.color}</h2>
-      </div>
-       
-    </div>
-     </Link>
-     
-  )
-}
+import { Link } from 'react-router-dom';
+import React from 'react';
 
-export default Item
+const Item = ({ info }) => {
+
+    return (
+        <>
+        <div className="card card-compact w-96 bg-base-100 shadow-xl ">
+            <figure><img src={`/images/games/${info.img}`} alt={info.name} /></figure>
+            <div className="card-body">
+                <h2 className="card-title justify-center colorTexto">{info.name}</h2>
+                <p className="colorTexto">Precio: ${info.price}</p>
+                <div className="card-actions justify-center">
+                    <Link to={`/detalle/${info.id}`}><button className="btn btn-primary">Comprar</button></Link>
+                </div>
+            </div>
+        </div>
+        </>
+    )
+};
+
+export default Item;
+

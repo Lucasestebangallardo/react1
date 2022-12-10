@@ -1,24 +1,32 @@
+import './itemCount.css';
 
-const ItemCount = ({setCount}) => {
-  const addItem =() =>{
-    setCount((currentValue) => currentValue +1);
-  };
-  const removeItem =() =>{
-    setCount((currentValue) => {
-      if(currentValue > 0){
-        return currentValue -1;
-      }else {
-        return currentValue
-      }
-    })
-  }
-  
-  return (
-    <div>
-      <button onClick={addItem}>Agregar </button>
-      <button onClick={removeItem}>Quitar </button>
-    </div>
-  );
-};
+import React,{useEffect, useState} from 'react';
+
+export const ItemCount = ({initial, stock, onAdd}) => {
+    const [count, setCount]  = useState(parseInt(initial));
+
+    const decrease = () => {
+        setCount(count - 1);
+    }
+
+    const increase = () => {
+        setCount(count + 1);
+    }
+
+    useEffect(() => {
+        setCount(parseInt(initial));
+    }, [initial])
+
+    return (
+        <div className='mt-5'>
+            <button disabled={count <= 1} onClick={decrease} className="mr-2 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded">-</button>
+            <span>{count}</span>
+            <button disabled={count >= stock} onClick={increase} className="ml-2 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded">+</button>
+            <div>
+                <button disabled={stock <=0} onClick={() => onAdd(count)} className="mt-2 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded">Agregar al carrito</button>
+            </div>
+        </div>
+    );
+}
 
 export default ItemCount;

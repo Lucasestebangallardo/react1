@@ -1,44 +1,33 @@
-import React from 'react';
+import './NavBar.css';
+
+import logo from '../../images/logos/logopc.jpg';
 import CartWidget from '../CartWidget/CartWidget';
-import{Link, NavLink} from 'react-router-dom'
-import './NavBar.css'
+import { Link, NavLink } from 'react-router-dom';
 
-const Navbar = () => {
+const NavBar = () => {
   return (
-    <div className='menu-navbar-container'>
-      
-      <h1 className='menu-title'>Tienda online</h1>
-      <div>
-      <ul className='menu-items'>
-        <li >
-          <NavLink to="/" Id='menu-list'
-          /* className={({isActive})=> isActive ? 'active' :'inactive' }  */
-          activeClassName="active"
-             >Productos</NavLink>
-        </li>
-        <li >
-          <NavLink to="/category/pantalones" Id='menu-list'  activeClassName="active"
-             >Pantalones</NavLink>
-           
-        </li>
-        <li >
-        <NavLink to="/category/remeras" Id='menu-list'activeClassName="active"
-             >Remeras</NavLink>
-        </li>
-      </ul>
-      </div>
-      
-        {/* <a href='/cart' className='menu-list'>Carrito</a> */}
-        {/* <Link to="/cart">Carrito</Link> */}
-       <div>
-        <Link to="/cart" Id='menu-list'> Carrito</Link>
-      Carrito
-       </div>
-      {/* </div>
-      <CartWidget/> */}
-      
-    </div>
-  )
-}
+    
+    <div className="navbar bg-base-100 flex headerNav">
+        <div className="flex-5">
+          <Link to='/' className=" logoNavBar btn btn-ghost normal-case text-xl" href='https://www.google.com'><img src={logo} alt={logo}/></Link>
+        </div>
 
-export default Navbar
+      <div className="navbar-center hidden lg:flex">
+        <ul className="menu menu-horizontal p-0">
+        <li><NavLink className={({isActive})=>isActive ? 'active' : 'inactive'} to={'/categoria/pc/'}>Pc completa</NavLink></li>
+          <li><NavLink className={({isActive})=>isActive ? 'active' : 'inactive'} to={'/categoria/placas'}>Placas de video</NavLink></li>
+          <li><NavLink className={({isActive})=>isActive ? 'active' : 'inactive'} to={'/categoria/monitores'}>Monitores</NavLink></li>
+          <li><NavLink className={({isActive})=>isActive ? 'active' : 'inactive'} to={'/categoria/perifericos'}>Perifericos</NavLink></li>
+        </ul>
+      </div>
+    
+      <NavLink className="mr-5 scaleCss nav__link btn btn-square btn-ghost" to='cart'>
+                            <CartWidget />
+                        </NavLink>
+
+    </div>
+
+  );
+};
+
+export default NavBar;

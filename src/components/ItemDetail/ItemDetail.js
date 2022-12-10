@@ -1,26 +1,45 @@
+import './ItemDetail.css'
+import React, {useState} from "react";
+import { useCartContext } from '../../context/CartContext';
 import ItemCount from "../ItemCount/ItemCount";
-import { useState, useContext} from "react";
-import { cartContext } from "../../context/CartProvider";
+import { Link } from 'react-router-dom';
 
+export const ItemDetail = ({data}) => {
+    const [goToCart, setGoToCart] = useState(false);
+    const { addProduct } = useCartContext()
 
+    const onAdd = (quantity) => {
+        setGoToCart(true);
+        addProduct(data, quantity);
+    }
 
-const ItemDetail = ({productoSelected}) => {
-  const [count, setCount] = useState(0);
-  const {cart,addToCart} = useContext(cartContext);
-  return (
-    <div>
-      {/* <h1>Esta es la cantidad de productos en el carrito{cart.length}</h1> */}
-      <h2>{productoSelected.id}</h2>
-      <h2>{productoSelected.nombre}</h2>
-      <h2>{productoSelected.category}</h2>
-      <h2>{productoSelected.precio}</h2>
-      <h2> {count}</h2>
-      <ItemCount setCount={setCount}/>
-     <button onClick={()=> addToCart(productoSelected, count)}>Agregar al carrito</button>
+    return (
+      <div className="cardProductDetail">
+<figure><img className='imgDetail' src={`/images/games/${data.img}`} alt={data.name} /></figure>
+      <div className="card w-50 bg-base-100 shadow-xl image-full imagenCard">
       
+        <div className="card-body">
+        <h2 className="card-title colorTexto justify-center">{data.name}</h2>
+          <p className='colorTexto'>{data.description}</p>
+          <p className='colorTexto'>Precio: ${data.price}</p>
+          <div className="card-actions justify-center">
+            {
+                              goToCart
+                              ? 
+                              <div className='buttomsFlex'>
       
-    </div>
-  )
+                              <div><Link to='/cart' className='btn mt-3 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded'>Ver mi carrito</Link></div>
+                              <div><Link to='/' className='btn mt-3 bg-green-500 hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded'>Seguir comprando</Link></div>
+                              
+                              </div>
+      
+                              : <ItemCount initial={1} stock={5} onAdd={onAdd}/>
+            }
+          </div>
+        </div>
+      </div>
+      </div>
+    );
 }
 
-export default ItemDetail
+export default ItemDetail;
